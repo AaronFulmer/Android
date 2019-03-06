@@ -1,0 +1,18 @@
+CREATE TABLE EMPLOYEE
+(EMPLOYEE_ID DECIMAL(4) PRIMARY KEY,
+ NAME_LAST CHAR(10),
+ NAME_FIRST CHAR(10),
+ EMAIL CHAR(30),
+ PHONE_NUMBER CHAR(10),
+ POSITION CHAR(10),
+ USERNAME CHAR(10),
+ PASSWORD CHAR(20));
+
+
+-- Insert Manager Information
+INSERT INTO EMPLOYEE VALUES
+(0001, 'Doe', 'John', 'john.doe@gmail.com', '8431234567', 'Manager', 'admin', 'password');
+
+-- Insert Employee Information
+INSERT INTO EMPLOYEE VALUES
+(0002, 'Smith', 'Bill', 'bill.smith@gmail.com', '0123456789', 'Employee', 'bsmith', 'password');

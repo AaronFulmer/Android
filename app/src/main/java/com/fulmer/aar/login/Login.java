@@ -8,14 +8,20 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.database.Cursor;
+import android.content.Context;
+
 
 public class Login extends AppCompatActivity {
 
+    public static DatabaseHelper sqLiteDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        sqLiteDB = new DatabaseHelper(this);
+        sqLiteDB.addDefaultUserData();
         final Button button = findViewById(R.id.loginButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -25,10 +31,22 @@ public class Login extends AppCompatActivity {
                 String username = usernameTextBox.getText().toString();
                 String password = passwordTextBox.getText().toString();
 
+
+
+                Cursor cursor = sqLiteDB.getName(username, password);
+                if(cursor.getCount() > 0) {
+                    Main.username = username;
+                    Main.password = password;
+                    Intent intent = new Intent(v.getContext(), Main.class);
+                    startActivity(intent);
+                }
+
+                /*
                 if(username.equals("admin") && password.equals("password")){
                     Intent intent = new Intent(v.getContext(), Main.class);
                     startActivity(intent);
                 }
+                */
                 else if (username.isEmpty() || password.isEmpty()){
                     AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
                     builder.setMessage("ERROR: Please make sure both fields have been filled").setTitle("ERROR");
@@ -52,6 +70,7 @@ public class Login extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
+
             }
         });
     }
