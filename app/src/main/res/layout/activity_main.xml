@@ -28,4 +28,18 @@
         android:text="Return"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="287dp" />
+
+    <Button
+        android:id="@+id/btnProceed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="596dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="596dp"
+        android:layout_marginBottom="191dp"
+        android:text="Proceed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </android.support.constraint.ConstraintLayout>

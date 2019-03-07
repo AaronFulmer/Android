@@ -1,7 +1,7 @@
 package com.fulmer.aar.login;
 
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,11 +33,21 @@ public class Main extends AppCompatActivity {
         label.setText("Hello, " + name);
 
         final Button button = findViewById(R.id.button);
+        final Button button1 = findViewById(R.id.btnProceed);
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
             }
 
         });
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), checkOutDvd.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
